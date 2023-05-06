@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Solicitud EESTN5</title>
+
+  <!-- FavIcon -->
+
+  <link rel="shortcut icon" href="../../public/img/logo-escuela.png">
+
+  <!-- CSS -->
+
+  <link rel="stylesheet" href="../css/styles.css">
+
+  <!-- Google Fonts -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="container">
+      <div id="top-header">
+        <div class="data">
+          <p>0220 - 4975100</p>
+          <p>eest5merlo@abc.gob.ar</p>
+        </div>
+        <a href="https://tecnica5merlo.edu.ar/wordpress/contacto/" class="">Contacto</a>
+      </div>
+      <header id="header" class="margin">
+        <nav class="navbar">
+          <button id="btn-menu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;">
+              <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"></path>
+            </svg>
+          </button>
+          <a href="#" class="brand"> <img src="../../public/img/logo.png" alt="" loading="lazy"> </a>
+          <ul class="navbar-list" id="navbar-list">
+            <li><a href="../../index.html" class="item">Inicio</a></li>
+            <li><a href="../../index.html#news-feed" class="item">Noticias</a></li>
+            <li><a href="solicitud.html" class="item">Solicitud</a></li>
+          </ul>
+          <ul class="navbar-login">
+            <li><a href="https://tecnica5merlo.edu.ar/">Volver a la escuela</a></li>
+          </ul>
+        </nav>
+      </header>
+      <section id="section-form">
+        <form class="formulario" id="formulario">
+
+          <div class="texto__form">
+
+            <h2>FORMULARIO DE CONTACTO</h2>
+            <p>Los campos marcados con <span>*</span> son obligatorios
+              Complete los datos del formulario, luego haga clic en Enviar. Responderemos su consulta a la brevedad.
+            </p>
+
+          </div>
+
+          <div class="datos__ingresaados">
+
+            <p>Apellido y Nombre <span>*</span></p>
+            <input name="user_name" placeholder="ej: Juan Pablo Villalba" required>
+
+            <p>Especialidad <span>*</span></p>
+            <select name="especialidad" class="selected" required>
+              <option value="" selected disabled>- -</option>
+              <option value="Informatica">Informatica</option>
+              <option value="Turismo">turismo</option>
+              <option value="Alimentos">Alimentos</option>
+              <option value="Alimentos">Ciclo Basico</option>
+            </select>
+
+            <p>Curso <span>*</span></p>
+            <select name="curso" class="selected" required>
+              <option value="" selected disabled>- -</option>
+              <option value="1 ro">1 ro</option>
+              <option value="2 do">2 do</option>
+              <option value="3 ro">3 ro</option>
+              <option value="4 to">4 to</option>
+              <option value="5 to">5 to</option>
+              <option value="6 to">6 to</option>
+              <option value="7 mo">7 mo</option>
+            </select>
+
+            <p>Division <span>*</span></p>
+            <select name="division" class="selected" required>
+              <option value="" selected disabled>- -</option>
+              <option value="Primera">Primera</option>
+              <option value="Segunda">Segunda</option>
+              <option value="Tercera">Tercera</option>
+              <option value="Cuarta">Cuarta</option>
+              <option value="Quinta">Quinta</option>
+              <option value="Sexto">Sexta</option>
+              <option value="Septimo">Septima</option>
+            </select>
+
+            <p>Turno <span>*</span></p>
+            <select name="turno" class="selected" required>
+              <option value="" selected disabled>- -</option>
+              <option value="Mañana">Mañana</option>
+              <option value="Tarde">Tarde</option>
+            </select>
+
+          </div>
+
+          <div class="info__problema">
+
+            <p>Ingrese Su Solicitud<span>*</span></p>
+            <textarea name="solicitud" rows="10" cols="87" required></textarea>
+
+          </div>
+
+          <div class="enviar">
+
+            <input class="enviar" id="submit" type="submit" value="Enviar">
+
+          </div>
+
+          <p id="my-form-status"></p>
+        </form>
+
+        <script>
+
+          const btn = document.getElementById('submit');
+
+          document.getElementById('formulario')
+            .addEventListener('submit', function(event) {
+              event.preventDefault();
+
+              btn.value = 'Enviando...';
+
+              const serviceID = 'service_cc6l944';
+              const templateID = 'template_grkvhor';
+
+              emailjs.sendForm(serviceID, templateID, this)
+                .then(() => {
+                  btn.value = 'Enviar';
+                  document.getElementById('formulario').reset();
+                  Swal.fire(
+                    'Bien Hecho!',
+                    'Tu solicitud se envio con exito!',
+                    'success'
+                    )
+                }, (err) => {
+                  btn.value = 'Enviar';
+                  document.getElementById('formulario').reset();
+                  Swal.fire(
+                    'Error!',
+                    'Error porfavor vuelve a intentarlo!',
+                    'error'
+                    )
+                });
+            });
+        </script>
+
+      </section>
+      <footer id="footer-centro">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <span>E E S T N°5</span>
+            <img src="../../public/img/logo-escuela.png">
+          </div>
+          <div class="footer-centro-list">
+            <span>TECNICATURAS</span>
+            <ul>
+              <li>Informatica Personal y Profesional</li>
+              <li>Servicios Turisticos</li>
+              <li>Tecnologia de los Alimentos</li>
+            </ul>
+          </div>
+          <div class="footer-centro-contacto">
+            <span>CONTACTO</span>
+            <ul>
+              <li>Malvinas 1715 - Libertad - Merlo</li>
+              <li>eest5merlo@abc.gob.a</li>
+              <li>0220 - 4975100</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-centro-end">
+          <p>© Desarrollada por Juan Pablo Villalba & Maximiliano Dos Santos - EEST N°5 - 2022</p>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+      emailjs.init('PVsh13MoMXh3U34Gq')
+    </script>
+    <script src="../js/main.js"></script>
+</body>
+
+</html>
